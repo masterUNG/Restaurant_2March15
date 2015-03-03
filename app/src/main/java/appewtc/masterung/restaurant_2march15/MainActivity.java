@@ -1,5 +1,6 @@
 package appewtc.masterung.restaurant_2march15;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.ActionBarActivity;
@@ -39,10 +40,20 @@ public class MainActivity extends ActionBarActivity {
         //Test add Value to SQLite
         //testAddValue();
 
+        //Delete All Data
+        deleteAllData();
+
         //Synchronize JSON to SQLite
         synJSONtoSQLite();
 
     }   // onCreate
+
+    private void deleteAllData() {
+
+        SQLiteDatabase objSqLiteDatabase = openOrCreateDatabase("restaurant.db", MODE_PRIVATE, null);
+        objSqLiteDatabase.delete("userTABLE", null, null);
+
+    }   // deleteAllData
 
     private void synJSONtoSQLite() {
 
